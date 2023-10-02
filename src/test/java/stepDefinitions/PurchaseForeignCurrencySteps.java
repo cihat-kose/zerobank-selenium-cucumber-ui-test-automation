@@ -4,14 +4,14 @@ import io.cucumber.java.en.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.OnlineBankingPage;
+import pages.OnlineBanking;
 import utilities.GWD;
 
 import java.time.Duration;
 
 public class PurchaseForeignCurrencySteps {
 
-    OnlineBankingPage obp=new OnlineBankingPage();
+    OnlineBanking obp=new OnlineBanking();
     @When("Click to Online Banking")
     public void clickToOnlineBanking() {
         obp.myClick(obp.onlineBanking);
