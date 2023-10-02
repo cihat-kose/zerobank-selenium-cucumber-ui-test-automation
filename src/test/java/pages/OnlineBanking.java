@@ -1,13 +1,12 @@
 package pages;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.GWD;
 
-public class OnlineBankingPage extends Parent{
-    public OnlineBankingPage() {
+public class OnlineBanking extends Parent{
+    public OnlineBanking() {
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
@@ -36,7 +35,7 @@ public class OnlineBankingPage extends Parent{
     @FindBy(id = "np_new_payee_address")
     public WebElement payeeAddress;
     @FindBy(id = "np_new_payee_account")
-    public WebElement account;
+    public WebElement payeeAccount;
     @FindBy(id = "np_new_payee_details")
     public WebElement payeeDetails;
     @FindBy(id = "add_new_payee")
@@ -49,7 +48,7 @@ public class OnlineBankingPage extends Parent{
             case "addNewPayee" : return this.addNewPayee;
             case "payeeName" : return this.payeeName;
             case "payeeAddress" : return this.payeeAddress;
-            case "account" : return this.account;
+            case "payeeAccount" : return this.payeeAccount;
             case "payeeDetails" : return this.payeeDetails;
         }
         return null;
