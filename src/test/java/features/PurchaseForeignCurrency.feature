@@ -15,6 +15,7 @@ Feature: Purchase Foreign Currency Functionality
     When  Click login button
     Then  Verify that user logged in.
 
+  @RegressionTest
   Scenario Outline: Convert amount to dollars
     When Click to Online Banking
     And  Click to Pay Bills

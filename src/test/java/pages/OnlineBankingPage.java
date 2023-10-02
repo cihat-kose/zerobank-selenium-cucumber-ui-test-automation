@@ -1,5 +1,6 @@
 package pages;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -28,5 +29,31 @@ public class OnlineBankingPage extends Parent{
     public WebElement purchaseButton;
     @FindBy(id = "alert_content")
     public WebElement successMessage;
+    @FindBy(linkText = "Add New Payee")
+    public WebElement addNewPayee;
+    @FindBy(id = "np_new_payee_name")
+    public WebElement payeeName;
+    @FindBy(id = "np_new_payee_address")
+    public WebElement payeeAddress;
+    @FindBy(id = "np_new_payee_account")
+    public WebElement account;
+    @FindBy(id = "np_new_payee_details")
+    public WebElement payeeDetails;
+    @FindBy(id = "add_new_payee")
+    public WebElement addButton;
+
+    public WebElement getWebElement(String stringElement){
+        switch (stringElement){
+            case "onlineBanking" : return this.onlineBanking;
+            case "payBills" : return this.payBills;
+            case "addNewPayee" : return this.addNewPayee;
+            case "payeeName" : return this.payeeName;
+            case "payeeAddress" : return this.payeeAddress;
+            case "account" : return this.account;
+            case "payeeDetails" : return this.payeeDetails;
+        }
+        return null;
+    }
+
 
 }
