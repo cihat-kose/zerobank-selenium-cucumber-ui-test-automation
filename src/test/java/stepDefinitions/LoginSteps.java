@@ -29,7 +29,7 @@ public class LoginSteps {
         GWD.getDriver().navigate().back();
     }
 
-    @Then("Verify that user logged in.")
+    @Then("Verify that user logged in")
     public void verifyThatUserLoggedIn() {
         Assert.assertTrue(lp.userIcon.isEnabled());
     }

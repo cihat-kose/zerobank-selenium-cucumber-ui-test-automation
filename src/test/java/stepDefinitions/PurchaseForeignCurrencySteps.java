@@ -15,7 +15,6 @@ public class PurchaseForeignCurrencySteps {
     @When("Click to Online Banking")
     public void clickToOnlineBanking() {
         obp.myClick(obp.onlineBanking);
-
     }
 
     @And("Click to Pay Bills")

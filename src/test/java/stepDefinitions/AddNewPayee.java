@@ -16,11 +16,9 @@ public class AddNewPayee {
         List<String> linksList=links.asList(String.class);
         for (int i = 0; i < linksList.size(); i++) {
             String link= linksList.get(i);
-            WebElement webElement= obp.getWebElement(link);
-            obp.myClick(webElement);
+            WebElement element= obp.getWebElement(link);
+            obp.myClick(element);
         }
-
-
     }
 
     @And("User sending name,address,account and details in OnlineBanking")

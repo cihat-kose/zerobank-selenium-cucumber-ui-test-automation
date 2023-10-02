@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.GWD;
 
-public class OnlineBanking extends Parent{
+public class OnlineBanking extends Parent {
     public OnlineBanking() {
         PageFactory.initElements(GWD.getDriver(), this);
     }
@@ -41,18 +41,23 @@ public class OnlineBanking extends Parent{
     @FindBy(id = "add_new_payee")
     public WebElement addButton;
 
-    public WebElement getWebElement(String stringElement){
-        switch (stringElement){
-            case "onlineBanking" : return this.onlineBanking;
-            case "payBills" : return this.payBills;
-            case "addNewPayee" : return this.addNewPayee;
-            case "payeeName" : return this.payeeName;
-            case "payeeAddress" : return this.payeeAddress;
-            case "payeeAccount" : return this.payeeAccount;
-            case "payeeDetails" : return this.payeeDetails;
+    public WebElement getWebElement(String stringElement) {
+        switch (stringElement) {
+            case "onlineBanking":
+                return this.onlineBanking;
+            case "payBills":
+                return this.payBills;
+            case "addNewPayee":
+                return this.addNewPayee;
+            case "payeeName":
+                return this.payeeName;
+            case "payeeAddress":
+                return this.payeeAddress;
+            case "payeeAccount":
+                return this.payeeAccount;
+            case "payeeDetails":
+                return this.payeeDetails;
         }
         return null;
     }
-
-
 }

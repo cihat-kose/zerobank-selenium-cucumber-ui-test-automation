@@ -19,14 +19,12 @@ public class Parent {
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
     }
-
     public void mySendKeys(WebElement element, String text) {
         wait.until(ExpectedConditions.visibilityOf(element));
         scrollToElement(element);
         element.clear();
         element.sendKeys(text);
     }
-
     public void scrollToElement(WebElement element) {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
@@ -36,7 +34,6 @@ public class Parent {
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
         new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
-
     public void myJsClick(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         scrollToElement(element);
