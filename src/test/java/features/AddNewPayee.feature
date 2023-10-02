@@ -35,14 +35,14 @@ Feature: New Payee Functionality
     And User sending name,address,account and details in OnlineBanking
       | payeeName    | <name>    |
       | payeeAddress | <address> |
-      | account      | <account> |
+      | payeeAccount | <account> |
       | payeeDetails | <details> |
 
     When Click to add button
     Then Verify that the transaction was successful
 
     Examples:
-      | name    | address | account | details           |
-      | Hilde   | Oslo    | 156328  | Rent payment      |
-      | Mustafa | Ankara  | 965832  | Amazon payment    |
-      | Alex    | London  | 965832  | Electiricity bill |
+      | name    | address | account | details          |
+      | Hilde   | Oslo    | 156328  | Rent payment     |
+      | Mustafa | Ankara  | 965832  | Amazon payment   |
+      | Alex    | London  | 965832  | Electricity bill |
