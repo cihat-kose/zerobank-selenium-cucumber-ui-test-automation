@@ -4,13 +4,13 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
-import pages.OnlineBankingPage;
+import pages.OnlineBanking;
 
 import java.util.List;
 
 public class AddNewPayee {
 
-    OnlineBankingPage obp=new OnlineBankingPage();
+    OnlineBanking obp=new OnlineBanking();
     @When("Click on the element in OnlineBanking")
     public void clickOnTheElementInOnlineBanking(DataTable links) {
         List<String> linksList=links.asList(String.class);
