@@ -2,26 +2,50 @@ package utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GWD {
 
-    public static WebDriver driver;
+    private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
+
+    public static ThreadLocal<String> threadBrowserName = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
 
-        if (driver == null) {
-            Logger logger = Logger.getLogger("");
-            logger.setLevel(Level.SEVERE);
+        Locale.setDefault(new Locale("EN"));
+        System.setProperty("user.language", "EN");
 
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        Logger logger = Logger.getLogger("");
+        logger.setLevel(Level.SEVERE);
+
+        if (threadBrowserName.get() == null) {
+            threadBrowserName.set("chrome");
         }
-        return driver;
+
+        if (threadDriver.get() == null) {
+
+            switch (threadBrowserName.get()) {
+                case "firefox":
+                    threadDriver.set(new FirefoxDriver());
+                case "safari":
+                    threadDriver.set(new SafariDriver());
+                case "edge":
+                    threadDriver.set(new EdgeDriver());
+                default:
+                    threadDriver.set(new ChromeDriver());
+            }
+        }
+
+        threadDriver.get().manage().window().maximize();
+        threadDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        return threadDriver.get();
     }
 
     public static void quitDriver() {
@@ -32,10 +56,13 @@ public class GWD {
             throw new RuntimeException(e);
         }
 
-        if (driver != null) {
-            driver.quit();
+        if (threadDriver.get() != null) {
+            threadDriver.get().quit();
+
+            WebDriver driver=threadDriver.get();
             driver = null;
+
+            threadDriver.set(driver);
         }
     }
-
 }
