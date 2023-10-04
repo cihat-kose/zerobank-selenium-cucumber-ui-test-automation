@@ -32,10 +32,13 @@ public class GWD {
             switch (threadBrowserName.get()) {
                 case "firefox":
                     threadDriver.set(new FirefoxDriver());
-                case "safari":
-                    threadDriver.set(new SafariDriver());
+                    break;
                 case "edge":
                     threadDriver.set(new EdgeDriver());
+                    break;
+                case "safari":
+                    threadDriver.set(new SafariDriver());
+                    break;
                 default:
                     threadDriver.set(new ChromeDriver());
             }
@@ -57,7 +60,7 @@ public class GWD {
         if (threadDriver.get() != null) {
             threadDriver.get().quit();
 
-            WebDriver driver=threadDriver.get();
+            WebDriver driver = threadDriver.get();
             driver = null;
 
             threadDriver.set(driver);
