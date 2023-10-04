@@ -9,7 +9,6 @@ import pages.LoginPage;
 import utilities.GWD;
 
 public class LoginSteps {
-
     LoginPage lp=new LoginPage();
 
     @Given("Navigate to website")

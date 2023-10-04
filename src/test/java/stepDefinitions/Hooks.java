@@ -8,12 +8,10 @@ import org.openqa.selenium.TakesScreenshot;
 import utilities.GWD;
 
 public class Hooks {
-
     @Before
     public void before(){
         System.out.println("The scenario started.");
     }
-
     @After
     public void after(Scenario scenario){
 

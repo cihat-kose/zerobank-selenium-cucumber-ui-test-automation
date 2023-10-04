@@ -12,9 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GWD {
-
     private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
-
     public static ThreadLocal<String> threadBrowserName = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
