@@ -1,9 +1,7 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import pages.OnlineBanking;
 import utilities.GWD;
 
@@ -11,7 +9,8 @@ import java.time.Duration;
 
 public class PurchaseForeignCurrencySteps {
 
-    OnlineBanking obp=new OnlineBanking();
+    OnlineBanking obp = new OnlineBanking();
+
     @When("Click to Online Banking")
     public void clickToOnlineBanking() {
         obp.myClick(obp.onlineBanking);
@@ -31,13 +30,13 @@ public class PurchaseForeignCurrencySteps {
     public void selectCurrencyThatAs(String value) {
         WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
         wait.until(ExpectedConditions.elementToBeClickable(obp.currencySelect));
-        Select select=new Select(obp.currencySelect);
+        Select select = new Select(obp.currencySelect);
         select.selectByValue(value);
     }
 
     @And("Enter to amount that as {string}")
     public void enterToAmountThatAs(String amount) {
-        obp.mySendKeys(obp.amount,amount);
+        obp.mySendKeys(obp.amount, amount);
     }
 
     @And("Click to U.S. dollar checkbox")

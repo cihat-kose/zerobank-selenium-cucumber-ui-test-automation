@@ -1,11 +1,8 @@
 package runners;
 
 import com.aventstack.extentreports.service.ExtentService;
-import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.cucumber.testng.CucumberOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import io.cucumber.testng.*;
+import org.testng.annotations.*;
 import utilities.GWD;
 
 @CucumberOptions
@@ -21,7 +18,7 @@ public class TestRunnerParallel extends AbstractTestNGCucumberTests {
 
     @BeforeClass
     @Parameters("browserType")
-    public void beforeClass(String browserName){
+    public void beforeClass(String browserName) {
         GWD.threadBrowserName.set(browserName);
     }
 
