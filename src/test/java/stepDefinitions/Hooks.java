@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import io.cucumber.java.*;
 import org.openqa.selenium.*;
+import utilities.ExcelUtility;
 import utilities.GWD;
 
 public class Hooks {
@@ -12,6 +13,9 @@ public class Hooks {
 
     @After
     public void after(Scenario scenario) {
+
+        ExcelUtility.writeToExcel("src/test/java/apachePOI/resource/_ScenarioResults.xlsx",
+                scenario,GWD.getThreadBrowserName());
 
         if (scenario.isFailed()) {
             TakesScreenshot screenshot = ((TakesScreenshot) GWD.getDriver());

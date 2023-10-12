@@ -48,7 +48,7 @@ public class ExcelUtility {
             cell.setCellValue(scenario.getName());
 
             cell = row.createCell(1);
-            cell.setCellValue(scenario.getStatus().toString());
+            cell.setCellValue(String.valueOf(scenario.getStatus())); // scenario.toString();
 
             cell = row.createCell(2);
             cell.setCellValue(browserName);
