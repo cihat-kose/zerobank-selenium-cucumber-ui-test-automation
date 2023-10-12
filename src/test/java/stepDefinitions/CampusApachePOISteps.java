@@ -30,9 +30,9 @@ public class CampusApachePOISteps {
 
     @And("Navigate to position categories")
     public void navigateToPositionCategories() {
-        campus.myClick(campus.getWebElement("humanResources"));
-        campus.myClick(campus.getWebElement("setupHumanResources"));
-        campus.myClick(campus.getWebElement("positionCategories"));
+        campus.myClick(campus.humanResources);
+        campus.myClick(campus.setupHumanResources);
+        campus.myClick(campus.positionCategories);
     }
 
     @And("User add a position category with ApachePOI")

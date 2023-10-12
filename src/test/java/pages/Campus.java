@@ -1,8 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.GWD;
 
@@ -46,43 +45,9 @@ public class Campus extends Parent {
     @FindBy(xpath = "//span[text()='Position Categories']")
     public WebElement positionCategories;
 
-
-    public WebElement getWebElement(String stringButton) {
-
-        switch (stringButton) {
-            case "setup":
-                return setup;
-            case "humanResources":
-                return humanResources;
-            case "setupHumanResources":
-                return setupHumanResources;
-            case "positionCategories":
-                return positionCategories;
-            case "addButton":
-                return addButton;
-            case "saveButton":
-                return saveButton;
-            case "nameInput":
-                return nameInput;
-            case "searchInput":
-                return searchInput;
-            case "username":
-                return username;
-            case "password":
-                return password;
-            case "editButton":
-                return editButton;
-            case "successMessage":
-                return successMessage;
-            case "searchButton":
-                return searchButton;
-        }
-        return null;
-    }
-
-    public void addItem(String newItem){
+    public void addItem(String newItem) {
         myClick(addButton);
-        mySendKeys(nameInput,newItem);
+        mySendKeys(nameInput, newItem);
         myClick(saveButton);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
         //wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//fuse-progress-bar/*"), 0));
