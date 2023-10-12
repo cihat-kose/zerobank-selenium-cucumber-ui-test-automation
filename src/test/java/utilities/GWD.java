@@ -1,20 +1,19 @@
 package utilities;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class GWD {
     private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
-    public static ThreadLocal<String> threadBrowserName = new ThreadLocal<>();
+    private static ThreadLocal<String> threadBrowserName = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
 
@@ -66,5 +65,13 @@ public class GWD {
 
             threadDriver.set(driver);
         }
+    }
+
+    public static String getThreadBrowserName() {
+        return threadBrowserName.get();
+    }
+
+    public static void setThreadBrowserName(String browser) {
+        threadBrowserName.set(browser);
     }
 }

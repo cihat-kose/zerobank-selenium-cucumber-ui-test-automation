@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
-
 import utilities.GWD;
 
 public class OnlineBanking extends Parent {
