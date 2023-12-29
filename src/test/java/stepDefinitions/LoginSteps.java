@@ -19,8 +19,8 @@ public class LoginSteps {
 
     @And("Enter username that as {string} and password that as {string}")
     public void enterUsernameThatAsAndPasswordThatAs(String username, String password) {
-        lp.mySendKeys(lp.username, "username");
-        lp.mySendKeys(lp.password, "password");
+        lp.mySendKeys(lp.username, username);
+        lp.mySendKeys(lp.password, password);
     }
 
     @When("Click login button")
