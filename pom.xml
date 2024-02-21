@@ -16,7 +16,6 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -82,11 +81,6 @@
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.1</version>
         </dependency>
-
-
-
-
-
     </dependencies>
 
 </project>
