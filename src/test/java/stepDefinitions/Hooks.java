@@ -8,7 +8,7 @@ import utilities.GWD;
 public class Hooks {
     @Before
     public void before() {
-        System.out.println("The scenario started.");
+        System.out.println("The scenario has started.");
     }
 
     @After
