@@ -3,14 +3,14 @@ package stepDefinitions;
 import io.cucumber.java.en.*;
 import org.apache.poi.ss.usermodel.*;
 import org.testng.Assert;
-import pages.LoginPage;
+import pages.Login;
 import utilities.GWD;
 
 import java.io.*;
 
 
 public class LoginSteps {
-    LoginPage lp = new LoginPage();
+    Login lp = new Login();
 
     @Given("Navigate to website")
     public void navigateToWebsite() {
