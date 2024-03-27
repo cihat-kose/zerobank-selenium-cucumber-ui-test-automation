@@ -7,7 +7,7 @@ import pages.OnlineBanking;
 
 import java.util.List;
 
-public class AddNewPayee {
+public class AddNewPayeeSteps {
 
     OnlineBanking obp = new OnlineBanking();
 
