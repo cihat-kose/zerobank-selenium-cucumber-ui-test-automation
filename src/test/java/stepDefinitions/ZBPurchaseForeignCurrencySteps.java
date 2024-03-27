@@ -2,14 +2,14 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 import org.openqa.selenium.support.ui.*;
-import pages.OnlineBanking;
+import pages.ZBOnlineBanking;
 import utilities.GWD;
 
 import java.time.Duration;
 
-public class PurchaseForeignCurrencySteps {
+public class ZBPurchaseForeignCurrencySteps {
 
-    OnlineBanking obp = new OnlineBanking();
+    ZBOnlineBanking obp = new ZBOnlineBanking();
 
     @When("Click to Online Banking")
     public void clickToOnlineBanking() {

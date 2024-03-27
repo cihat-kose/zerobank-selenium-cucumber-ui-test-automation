@@ -4,9 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
 import utilities.GWD;
 
-public class Login extends Parent {
+public class ZBLogin extends Parent {
 
-    public Login() {
+    public ZBLogin() {
         PageFactory.initElements(GWD.getDriver(), this);
     }
 

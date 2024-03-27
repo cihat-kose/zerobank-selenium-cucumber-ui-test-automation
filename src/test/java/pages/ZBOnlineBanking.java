@@ -4,8 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
 import utilities.GWD;
 
-public class OnlineBanking extends Parent {
-    public OnlineBanking() {
+public class ZBOnlineBanking extends Parent {
+    public ZBOnlineBanking() {
         PageFactory.initElements(GWD.getDriver(), this);
     }
 

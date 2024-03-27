@@ -3,13 +3,13 @@ package stepDefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebElement;
-import pages.OnlineBanking;
+import pages.ZBOnlineBanking;
 
 import java.util.List;
 
-public class AddNewPayeeSteps {
+public class ZBAddNewPayeeSteps {
 
-    OnlineBanking obp = new OnlineBanking();
+    ZBOnlineBanking obp = new ZBOnlineBanking();
 
     @When("Click on the element in OnlineBanking")
     public void clickOnTheElementInOnlineBanking(DataTable links) {
