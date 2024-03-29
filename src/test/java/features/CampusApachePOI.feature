@@ -1,7 +1,7 @@
 Feature: Add - Edit and Delete Functionality for Position Categories
 
   Scenario: Add -  Edit and Delete Position Category From Excel
-    Given   Navigate to Campus
+    Given   Navigate to campus
     When    Enter username and password and click button
     Then    User should login successfully
     And     Navigate to position categories

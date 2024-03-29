@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CampusApachePOISteps {
     Campus campus = new Campus();
 
-    @Given("Navigate to Campus")
+    @Given("Navigate to campus")
     public void navigateToCampus() {
         GWD.getDriver().get("https://test.mersys.io/");
     }
