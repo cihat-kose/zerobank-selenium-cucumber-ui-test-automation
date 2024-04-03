@@ -4,7 +4,7 @@ import io.cucumber.testng.*;
 
 @CucumberOptions
         (
-        tags = "@RegressionTest",
+        tags = "@Regression",
         features = {"src/test/java/features"},
         glue = {"stepDefinitions"}
         )
