@@ -2,13 +2,15 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.Campus;
+import pages.Parent;
 import utilities.ExcelUtility;
 import utilities.GWD;
 
 import java.util.ArrayList;
 
-public class CampusApachePOISteps {
+public class CampusApachePOISteps extends Parent {
     Campus campus = new Campus();
 
     @Given("Navigate to campus")
@@ -25,7 +27,7 @@ public class CampusApachePOISteps {
 
     @Then("User should login successfully")
     public void userShouldLoginSuccessfully() {
-        campus.verifyContainsText(campus.textTechnoStudy, "Techno Study");
+        campus.verifyContainsText(campus.textTechnoStudy, "Internship");
     }
 
     @And("Navigate to position categories")
@@ -46,6 +48,7 @@ public class CampusApachePOISteps {
         for (int i = 0; i < table.size(); i++) {
             ArrayList<String> row = table.get(i);
             campus.addItem(row.get(0));
+            wait.until(ExpectedConditions.visibilityOfAllElements(campus.successMessage));
             campus.verifyContainsText(campus.successMessage, "success");
         }
     }
@@ -61,6 +64,7 @@ public class CampusApachePOISteps {
         for (int i = 0; i < table.size(); i++) {
             ArrayList<String> row = table.get(i);
             campus.editItem(row.get(0), row.get(1));
+            wait.until(ExpectedConditions.visibilityOfAllElements(campus.successMessage));
             campus.verifyContainsText(campus.successMessage, "success");
         }
     }
@@ -76,6 +80,7 @@ public class CampusApachePOISteps {
         for (int i = 0; i < table.size(); i++) {
             ArrayList<String> row = table.get(i);
             campus.deleteItem(row.get(1));
+            wait.until(ExpectedConditions.visibilityOfAllElements(campus.successMessage));
             campus.verifyContainsText(campus.successMessage, "success");
         }
     }

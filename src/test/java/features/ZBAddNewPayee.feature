@@ -24,7 +24,7 @@ Feature: New Payee Functionality
     When  Click login button
     Then  Verify that user logged in
 
-  @RegressionTest
+  @Regression
   Scenario Outline: Fill in the required information completely
     When Click on the element in OnlineBanking
       | onlineBanking |

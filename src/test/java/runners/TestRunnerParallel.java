@@ -7,7 +7,7 @@ import utilities.GWD;
 
 @CucumberOptions
         (
-                tags = "@SmokeTest",
+                tags = "@Smoke",
                 features = "src/test/java/features",
                 glue = "stepDefinitions",
                 plugin = "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",

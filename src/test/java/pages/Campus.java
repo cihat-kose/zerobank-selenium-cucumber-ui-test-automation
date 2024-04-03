@@ -50,14 +50,16 @@ public class Campus extends Parent {
         mySendKeys(nameInput, newItem);
         myClick(saveButton);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
-        //wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//fuse-progress-bar/*"), 0));
+        //      Alternative Way:
+//      wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//ms-delete-button//button"),1));
     }
 
     public void deleteItem(String searchText) {
         mySendKeys(searchInput, searchText);
         myClick(searchButton);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
-        //wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//fuse-progress-bar/*"), 0));
+        //      Alternative Way:
+//      wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//ms-delete-button//button"),1));
         myClick(deleteImageButton);
         myClick(deleteDialogButton);
     }
@@ -66,7 +68,8 @@ public class Campus extends Parent {
         mySendKeys(searchInput, oldText);
         myClick(searchButton);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton));
-        //wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//fuse-progress-bar/*"), 0));
+        //      Alternative Way:
+//      wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//ms-delete-button//button"),1));
         myClick(editButton);
         mySendKeys(nameInput, newText);
         myClick(saveButton);

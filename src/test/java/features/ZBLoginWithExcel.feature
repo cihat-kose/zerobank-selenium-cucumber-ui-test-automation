@@ -9,7 +9,7 @@
 
 Feature: Login Functionality
 
-  @SmokeTest
+  @Smoke
   Scenario: Login with valid username and password
     Given Navigate to website
     And   Enter username and password from ZeroBankData
