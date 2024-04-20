@@ -6,15 +6,15 @@ import java.io.*;
 
 
 public class _ApachePOINewExcelWrite {
+
     public static void main(String[] args) throws IOException {
 
         XSSFWorkbook workbook=new XSSFWorkbook();
         XSSFSheet sheet= workbook.createSheet("New Sheet");
 
-        Row row = sheet.createRow(0);
-        Cell cell = row.createCell(0);
+        Row row = sheet.createRow(2);
+        Cell cell = row.createCell(3);
         cell.setCellValue("New cell has created.");
-
 
         String path ="src/test/java/apachePOI/resource/_ApachePOINewExcel.xlsx";
         FileOutputStream fileOutputStream=new FileOutputStream(path);

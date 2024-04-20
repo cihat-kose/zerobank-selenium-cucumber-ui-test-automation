@@ -6,6 +6,7 @@ import java.io.*;
 
 
 public class _ApachePOIWriteInTheExcel {
+
     public static void main(String[] args) throws IOException {
 
         String path = "src/test/java/apachePOI/resource/_ApachePOIWriteInTheExcel.xlsx";
@@ -15,7 +16,7 @@ public class _ApachePOIWriteInTheExcel {
 
         int lastRowIndex = sheet.getPhysicalNumberOfRows();
         Row row = sheet.createRow(lastRowIndex);
-        Cell cell = row.createCell(3);
+        Cell cell = row.createCell(2);
         cell.setCellValue("Apache POI");
         fileInputStream.close();
 
