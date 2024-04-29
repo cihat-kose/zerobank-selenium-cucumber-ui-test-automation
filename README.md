@@ -1,6 +1,6 @@
 # Current Selenium and JDBC Training Practices
 
-## Scanario Outline
+## Scenario Outline
 ## Data Table
 ## Runner Class
 ## Reports
