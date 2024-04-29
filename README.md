@@ -1,4 +1,4 @@
-# Current Selenium Training Practices
+# Current Selenium and JDBC Training Practices
 
 ## Scanario Outline
 ## Data Table
@@ -6,3 +6,4 @@
 ## Reports
 ## Cross Browsers
 ## Apache POI
+## JDBC
