@@ -2,14 +2,15 @@ package jdbc;
 
 import org.testng.annotations.Test;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class JDBCPractices02 extends JDBCParent {
 
     @Test
     public void test1() throws SQLException {
 
-        ResultSet resultTable=statement.executeQuery("select * from actor");
+        ResultSet resultTable = statement.executeQuery("select * from actor");
 
         resultTable.next(); // One step forward --> 1. Row
         System.out.println("resultTable.getString(2) = " + resultTable.getString(2)); // 1. Row and 2. Column
@@ -24,7 +25,7 @@ public class JDBCPractices02 extends JDBCParent {
     @Test
     public void test2() throws SQLException {
 
-        ResultSet resultTable=statement.executeQuery("select * from actor");
+        ResultSet resultTable = statement.executeQuery("select * from actor");
 
         resultTable.absolute(10); // Go directly to line 10
         System.out.println("resultTable.getString(2) = " + resultTable.getString(2));
@@ -52,7 +53,7 @@ public class JDBCPractices02 extends JDBCParent {
     @Test
     public void test3() throws SQLException {
 
-        ResultSet resultTable=statement.executeQuery("select * from actor");
+        ResultSet resultTable = statement.executeQuery("select * from actor");
 
         resultTable.first(); // Goes to the first line
         System.out.println("resultTable.getRow() = " + resultTable.getRow());
