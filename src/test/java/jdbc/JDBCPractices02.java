@@ -4,44 +4,62 @@ import org.testng.annotations.Test;
 
 import java.sql.*;
 
-public class JDBCPractices02 {
+public class JDBCPractices02 extends JDBCParent {
 
     @Test
     public void test1() throws SQLException {
 
-        // What is done to make a query work
-        String hostUrl = "jdbc:mysql://db-technostudy.ckr1jisflxpv.us-east-1.rds.amazonaws.com/sakila";
-        String username = "root";
-        String password = "'\"-LhCB'.%k[4S]z";
-
-        // 1)- We entered the connection information --> Connection information was set.
-        Connection connection= DriverManager.getConnection(hostUrl,username,password);
-
-        // 2)- We have chose the database -->
-        // This information was added to hostUrl (/sakila); no other additional action was taken
-        // String hostUrl = "jdbc:mysql://db-technostudy.ckr1jisflxpv.us-east-1.rds.amazonaws.com/sakila";
-
-        // 3)- We opened the query screen
-        Statement statement= connection.createStatement();
-
-        // 4)- We wrote the query to query screen then I was run
         ResultSet resultTable=statement.executeQuery("select * from actor");
 
-        // 5)- The results appeared below
-        resultTable.next(); // At this stage we have completed the first line
+        resultTable.next(); // One step forward --> 1. Row
+        System.out.println("resultTable.getString(2) = " + resultTable.getString(2)); // 1. Row and 2. Column
 
-        String name=resultTable.getString("first_name");
-        String lastName=resultTable.getString("last_name");
-        System.out.println("name = " + name);
-        System.out.println("lastName = " + lastName);
+        resultTable.next(); // One step forward --> 2. Row
+        System.out.println("resultTable.getString(\"first_name\") = " + resultTable.getString("first_name"));// 2. Row and name Column (2. Column)
 
-        resultTable.next();
+        resultTable.previous(); // One step previous --> 1.Row
+        System.out.println("resultTable.getString(2) = " + resultTable.getString(2));
+    }
 
-        name=resultTable.getString("first_name");
-        lastName=resultTable.getString("last_name");
-        System.out.println("name = " + name);
-        System.out.println("lastName = " + lastName);
+    @Test
+    public void test2() throws SQLException {
 
-        connection.close();
+        ResultSet resultTable=statement.executeQuery("select * from actor");
+
+        resultTable.absolute(10); // Go directly to line 10
+        System.out.println("resultTable.getString(2) = " + resultTable.getString(2));
+
+        resultTable.absolute(5); // Go directly to line 5
+        System.out.println("resultTable.getString(\"first_name\") = " + resultTable.getString("first_name"));
+
+        resultTable.relative(5); // Wherever you are at the end, go 5 from there --> to line 10
+        System.out.println("resultTable.getString(\"first_name\") = " + resultTable.getString("first_name"));
+
+        resultTable.next(); // Goes to 11
+        resultTable.previous(); // Goes to10
+
+        // resultTable.next()          : Next Line
+        // resultTable.previous        : Previous Line
+        // resultTable.absolute(10)    : Moves forward to line 10 from the beginning.
+        // resultTable.relative(10)    : It moves forward from its current position to the 10th line.
+        // resultTable.absolute(-10)   : - (minus) means from the end, 10th line from the end
+        // resultTable.relative(-5)    : - (minus) 5 lines back from where it is
+
+        // If we want to go back 5 from the first line with relative,
+        // it will give an error because it exceeds the limit.
+    }
+
+    @Test
+    public void test3() throws SQLException {
+
+        ResultSet resultTable=statement.executeQuery("select * from actor");
+
+        resultTable.first(); // Goes to the first line
+        System.out.println("resultTable.getRow() = " + resultTable.getRow());
+        System.out.println("resultTable.getString(2) = " + resultTable.getString(2));
+
+        resultTable.last(); // Goes to the last line
+        System.out.println("resultTable.getString(2) = " + resultTable.getString(2));
+        System.out.println("resultTable.getRow() = " + resultTable.getRow());
     }
 }
