@@ -13,8 +13,8 @@ public class Hooks {
     @After
     public void after(Scenario scenario) {
 
-        ExcelUtility.writeToExcel("src/test/java/apachePOI/resource/_ScenarioResults.xlsx",
-                scenario,GWD.getThreadBrowserName());
+//        ExcelUtility.writeToExcel("src/test/java/apachePOI/resource/_ScenarioResults.xlsx",
+//                scenario,GWD.getThreadBrowserName());
 
         if (scenario.isFailed()) {
             TakesScreenshot screenshot = ((TakesScreenshot) GWD.getDriver());
