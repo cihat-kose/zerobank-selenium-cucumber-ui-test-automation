@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>TestingPractices_Cucumber_JDBC_UI_DB</artifactId>
+    <artifactId>TestingPractices_Cucumber_UI</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -74,12 +74,6 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
         </dependency>
 
     </dependencies>
