@@ -1,7 +1,6 @@
-# Current Selenium and JDBC Training Practices
+# Current Selenium Training Practices
 
 ## UI Testing
-## Database Testing
 
 ### Scenario Outline
 ### Data Table
@@ -9,4 +8,3 @@
 ### Reports
 ### Cross Browsers
 ### Apache POI
-### JDBC
