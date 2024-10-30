@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 import pages.ZBLoginPage;
 import utilities.GWD;
 
@@ -21,13 +22,14 @@ public class ZBLoginSteps {
         zbLoginPage.mySendKeys(zbLoginPage.password, password);
     }
 
-    @When("Click login button")
-    public void clickLoginButton() {
-
+    @When("Click sign in button")
+    public void clickSignInButton() {
+        zbLoginPage.myClick(zbLoginPage.signInButton);
+        GWD.getDriver().navigate().back();
     }
 
     @Then("Verify that user logged in")
     public void verifyThatUserLoggedIn() {
-
+        Assert.assertTrue(zbLoginPage.userIcon.isEnabled());
     }
 }

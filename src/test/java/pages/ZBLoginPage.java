@@ -20,4 +20,7 @@ public class ZBLoginPage extends Parent {
     @FindBy(css ="[name='submit']" )
     public WebElement signInButton;
 
+    @FindBy(css = "[class='icon-user']")
+    public WebElement userIcon;
+
 }
