@@ -37,4 +37,24 @@ public class ZBOnlineBanking extends Parent{
 
     @FindBy(id = "alert_content")
     public WebElement successMessage;
+
+    public WebElement getWebElement(String stringElement){
+        switch (stringElement){
+            case "onlineBanking":
+                return onlineBanking;
+            case "payBills":
+                return this.payBills;
+            case "addNewPayee":
+                return this.addNewPayee;
+            case "payeeName":
+                return this.payeeName;
+            case "payeeAddress":
+                return this.payeeAddress;
+            case "payeeAccount":
+                return this.payeeAccount;
+            case "payeeDetails":
+                return this.payeeDetails;
+        }
+        return null;
+    }
 }

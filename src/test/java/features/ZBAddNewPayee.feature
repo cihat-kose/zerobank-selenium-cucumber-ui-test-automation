@@ -1,7 +1,7 @@
 #Kullanılacak Web site: http://zero.webappsecurity.com/login.html
 #Username: username
 #Password: password
-#
+
 #Test Case 1:
 #➢ ZeroBank sitesine gidiniz.
 #➢ Login olunuz
@@ -9,12 +9,11 @@
 #➢ Pay Bills’e tıklayınız.
 #➢ “Add New Payee” tıklayınız
 #➢ Name, Address, Account, Details alanlarını doldurunuz.
-#
+# ➢ Add butona tıklayınız
+#➢ İşlemin başarıyla tamamlandığını doğrulayınız.
+
 #NOT: 3 farklı data gönderiniz
 #NOT: Data Table kullanınız.
-#
-#➢ Add butona tıklayınız
-#➢ İşlemin başarıyla tamamlandığını doğrulayınız.
 
 
 Feature: New Payee Functionality
@@ -38,6 +37,9 @@ Feature: New Payee Functionality
       | payeeDetails |
 
     Examples:
-      | name | address | account | details |
+      | name    | address | account | details          |
+      | Hilde   | Oslo    | 156328  | Rent payment     |
+      | Mustafa | Ankara  | 965832  | Amazon payment   |
+      | Alex    | London  | 965832  | Electricity bill |
 
 

@@ -24,7 +24,7 @@ public class GWD {
         logger.setLevel(Level.SEVERE);
 
         if (threadBrowserName.get() == null) {
-            threadBrowserName.set("chrome");
+            threadBrowserName.set("edge");
         }
 
         if (threadDriver.get() == null) {
@@ -33,14 +33,14 @@ public class GWD {
                 case "firefox":
                     threadDriver.set(new FirefoxDriver());
                     break;
-                case "edge":
-                    threadDriver.set(new EdgeDriver());
+                case "chrome":
+                    threadDriver.set(new ChromeDriver());
                     break;
                 case "safari":
                     threadDriver.set(new SafariDriver());
                     break;
                 default:
-                    threadDriver.set(new ChromeDriver());
+                    threadDriver.set(new EdgeDriver());
             }
         }
 
