@@ -36,7 +36,7 @@ public class ZBLoginSteps {
 
     @And("Enter username and password from ZeroBankData")
     public void enterUsernameAndPasswordFromZeroBankData() throws IOException {
-        String path = "src/test/java/apachePOI/resource/_ZeroBankData.xlsx";
+        String path = "src/test/java/apachePOI/resource/ZeroBankData.xlsx";
 
         FileInputStream fileInputStream = new FileInputStream(path);
         Workbook workbook = WorkbookFactory.create(fileInputStream);
