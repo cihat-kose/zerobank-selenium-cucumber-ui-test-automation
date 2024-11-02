@@ -4,9 +4,10 @@
 ![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
 ![TestNG](https://img.shields.io/badge/TestNG-FF7300?style=for-the-badge&logo=testng&logoColor=white)
-![Apache POI](https://img.shields.io/badge/Apache%20POI-231F20?style=for-the-badge&logo=apache&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Apache POI](https://img.shields.io/badge/Apache%20POI-231F20?style=for-the-badge&logo=apache&logoColor=white)
 
 ## Table of Contents
 
@@ -48,6 +49,7 @@ Additionally, this project serves as a practical resource for learners who are i
 - **Data Table Support with Apache POI**: Uses data tables for parameterized tests, allowing multiple sets of input. Apache POI is used to manage test data from Excel files.
 - **Extent Reports**: Generates HTML and PDF reports of the test results.
 - **Parallel Testing**: Supports parallel execution to speed up test runs.
+- **Jenkins Integration**: Easily integrate with Jenkins for continuous integration and delivery (CI/CD) processes.
 
 ## Application Under Test
 
