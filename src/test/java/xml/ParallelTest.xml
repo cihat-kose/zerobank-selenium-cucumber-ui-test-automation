@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cross-Browser Testing Suite" parallel="tests" thread-count="2">
+
+    <test name="Edge Browser Test">
+        <parameter name="browserType" value="edge" />
+        <classes>
+            <class name="runners.TestRunnerParallel" />
+        </classes>
+    </test>
+
+    <test name="Firefox Browser Test">
+        <parameter name="browserType" value="firefox" />
+        <classes>
+            <class name="runners.TestRunnerParallel" />
+        </classes>
+    </test>
+
+</suite>
