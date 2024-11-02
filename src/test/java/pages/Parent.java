@@ -5,13 +5,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
-import utilities.GWD;
+import utilities.DriverManager;
 
 import java.time.Duration;
 
 public class Parent {
-    public WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
-    public JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+
+    public WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
+    public JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
 
     public void myClick(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -32,7 +33,7 @@ public class Parent {
     public void verifyContainsText(WebElement element, String value) {
         wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
-        new Actions(GWD.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
+        new Actions(DriverManager.getDriver()).sendKeys(Keys.ESCAPE).build().perform();
     }
 
     public void myJsClick(WebElement element) {

@@ -1,20 +1,17 @@
-#Kullanılacak Web site: http://zero.webappsecurity.com/login.html
-#Username: username
-#Password: password
-#
-#Test Case 1:
-#➢ ZeroBank sitesine gidiniz.
-#➢ Login olunuz
-#➢ Online Banking’e tıklayınız.
-#➢ Pay Bills’e tıklayınız.
-#➢ “Add New Payee” tıklayınız
-#➢ Name, Address, Account, Details alanlarını doldurunuz.
-#
-#NOT: 3 farklı data gönderiniz
-#NOT: Data Table kullanınız.
-#
-#➢ Add butona tıklayınız
-#➢ İşlemin başarıyla tamamlandığını doğrulayınız.
+
+  #  Test Case 3:
+
+  #➢ ZeroBank sitesine gidiniz.
+  #➢ Login olunuz
+  #➢ Online Banking’e tıklayınız.
+  #➢ Pay Bills’e tıklayınız.
+  #➢ “Add New Payee” tıklayınız
+  #➢ Name, Address, Account, Details alanlarını doldurunuz.
+  #➢ Add butona tıklayınız
+  #➢ İşlemin başarıyla tamamlandığını doğrulayınız.
+
+  # NOT: 3 farklı data gönderiniz
+  # NOT: Data Table kullanınız.
 
 Feature: New Payee Functionality
 

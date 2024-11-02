@@ -11,7 +11,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GWD {
+public class DriverManager {
     private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
     private static ThreadLocal<String> threadBrowserName = new ThreadLocal<>();
 
