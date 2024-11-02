@@ -14,7 +14,7 @@ public class Hooks {
     @After
     public void after(Scenario scenario) {
 
-        ExcelUtility.writeToExcel("src/test/java/apachePOI/resource/ScenarioResults.xlsx",
+        ExcelUtility.writeToExcel("src/test/java/apachePOI/ScenarioResults.xlsx",
                 scenario,GWD.getThreadBrowserName());
 
         if (scenario.isFailed()) {
