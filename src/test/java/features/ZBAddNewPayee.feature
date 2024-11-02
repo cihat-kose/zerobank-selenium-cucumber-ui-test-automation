@@ -31,10 +31,10 @@ Feature: New Payee Functionality
       | addNewPayee   |
 
     And User sending name, address, account and details in OnlineBanking
-      | payeeName    |
-      | payeeAddress |
-      | payeeAccount |
-      | payeeDetails |
+      | payeeName    | <name>    |
+      | payeeAddress | <address> |
+      | payeeAccount | <account> |
+      | payeeDetails | <details> |
 
     Examples:
       | name    | address | account | details          |
