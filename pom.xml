@@ -4,35 +4,40 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Project metadata -->
     <groupId>org.example</groupId>
     <artifactId>TestingPractices_Cucumber_UI</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Project properties -->
     <properties>
+        <!-- Define the Java version used by the compiler -->
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <!-- Set the encoding of the source code files to UTF-8 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Set the language to English during execution -->
         <argLine>-Duser.language=en</argLine>
     </properties>
 
-    <!-- Dependencies -->
+    <!-- Project dependencies -->
     <dependencies>
-        <!-- Selenium WebDriver library for browser automation -->
+        <!-- Selenium WebDriver for browser automation -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.25.0</version>
         </dependency>
 
-        <!-- Cucumber library for writing feature files in Gherkin syntax (used in Java) -->
+        <!-- Cucumber Java for writing feature files in Gherkin syntax -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>7.11.0</version>
-            <scope>test</scope>
+            <scope>test</scope> <!-- Only required during testing -->
         </dependency>
 
-        <!-- Cucumber TestNG integration for running Cucumber tests within the TestNG framework -->
+        <!-- Cucumber TestNG integration to run Cucumber tests with TestNG -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
@@ -40,7 +45,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- TestNG library for organizing and managing test cases -->
+        <!-- TestNG for organizing and managing test cases -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -48,14 +53,14 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- SLF4J API for logging (API only, requires implementation) -->
+        <!-- SLF4J API for logging (requires an implementation) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.16</version>
         </dependency>
 
-        <!-- SLF4J Simple Logger for simple, console-based logging (used during testing) -->
+        <!-- SLF4J Simple Logger for basic console logging during testing -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -63,64 +68,75 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Apache Commons IO for file handling utilities like FileUtils -->
+        <!-- Apache Commons IO for file utilities like FileUtils -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version>
         </dependency>
 
-        <!-- Apache Commons Lang for utilities to handle core Java functionalities (e.g., String manipulation) -->
+        <!-- Apache Commons Lang for common Java functionalities (e.g., String manipulation) -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.17.0</version>
         </dependency>
 
-        <!-- ExtentReports adapter for Cucumber 7 to generate rich test reports -->
+        <!-- ExtentReports adapter for Cucumber 7 for rich test reporting -->
         <dependency>
             <groupId>tech.grasshopper</groupId>
             <artifactId>extentreports-cucumber7-adapter</artifactId>
             <version>1.14.0</version>
         </dependency>
 
-        <!-- Apache POI library for reading and writing Microsoft Office Excel files -->
+        <!-- Apache POI for reading and writing Excel files -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>5.2.3</version>
         </dependency>
 
-        <!-- Apache POI library (OOXML version) for handling Excel files in .xlsx format -->
+        <!-- Apache POI OOXML for handling Excel files in .xlsx format -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.3</version>
         </dependency>
+
+        <!-- Log4j API and Core for logging functionality (optional, remove if no logging is needed) -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.18.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.18.0</version>
+        </dependency>
     </dependencies>
 
-    <!-- Plugin configuration where we determine where Jenkins' run command will execute -->
+    <!-- Build and plugin configuration -->
     <build>
         <plugins>
+            <!-- Maven Surefire Plugin to run tests (supports TestNG and JUnit tests) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M1</version>
                 <configuration>
-
-                    <!-- Uncomment the following suiteXmlFiles section to specify a custom XML test suite file -->
+                    <!-- suiteXmlFiles: Uncomment to specify a custom TestNG XML suite file -->
                     <!-- <suiteXmlFiles> -->
                     <!--    <suiteXmlFile>src/test/java/xml/SmokeTest.xml</suiteXmlFile> -->
                     <!-- </suiteXmlFiles> -->
 
                     <includes>
-                        <!-- Specifies which class or classes to run; **/ allows locating by any folder structure -->
+                        <!-- Only run specified test classes; **/ allows matching any directory structure -->
                         <include>**/TestRunnerSmoke.java</include>
                     </includes>
-
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
