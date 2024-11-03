@@ -4,17 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Project metadata -->
     <groupId>org.example</groupId>
     <artifactId>TestingPractices_Cucumber_UI</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!-- Project properties -->
     <properties>
-        <!-- Define the Java version used by the compiler -->
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <!-- Set the encoding of the source code files to UTF-8 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Set the language to English during execution -->
         <argLine>-Duser.language=en</argLine>
