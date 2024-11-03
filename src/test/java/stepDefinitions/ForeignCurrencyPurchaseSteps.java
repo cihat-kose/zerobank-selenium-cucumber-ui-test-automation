@@ -1,56 +1,60 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.*;
-import org.openqa.selenium.support.ui.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.OnlineBanking;
 import utilities.DriverManager;
 
 import java.time.Duration;
 
-public class PurchaseForeignCurrencySteps {
+public class ForeignCurrencyPurchaseSteps {
 
     OnlineBanking onlineBanking = new OnlineBanking();
 
-    @When("Click to Online Banking")
-    public void clickToOnlineBanking() {
+    @When("User clicks on the Online Banking section")
+    public void userClicksOnTheOnlineBankingSection() {
         onlineBanking.myClick(onlineBanking.onlineBanking);
     }
 
-    @And("Click to Pay Bills")
-    public void clickToPayBills() {
+    @And("User clicks on Pay Bills")
+    public void userClicksOnPayBills() {
         onlineBanking.myClick(onlineBanking.payBills);
     }
 
-    @And("Click to Purchase Foreign Currency")
-    public void clickToPurchaseForeignCurrency() {
+    @And("User clicks on Purchase Foreign Currency")
+    public void userClicksOnPurchaseForeignCurrency() {
         onlineBanking.myClick(onlineBanking.purchaseForeignCurrency);
     }
 
-    @And("Select currency that as {string}")
-    public void selectCurrencyThatAs(String value) {
+    @And("User selects currency as {string}")
+    public void userSelectsCurrencyAs(String currency) {
         WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
         wait.until(ExpectedConditions.elementToBeClickable(onlineBanking.currencySelect));
         Select select = new Select(onlineBanking.currencySelect);
-        select.selectByValue(value);
+        select.selectByValue(currency);
     }
 
-    @And("Enter to amount that as {string}")
-    public void enterToAmountThatAs(String amount) {
+    @And("User enters amount as {string}")
+    public void userEntersAmountAs(String amount) {
         onlineBanking.mySendKeys(onlineBanking.amount, amount);
     }
 
-    @And("Click to U.S. dollar checkbox")
-    public void clickToUSDollarCheckbox() {
+    @And("User clicks on U.S. dollar checkbox")
+    public void userClicksOnUSDollarCheckbox() {
         onlineBanking.myClick(onlineBanking.dollarCheckbox);
     }
 
-    @And("Click to Calculate Costs button")
-    public void clickToCalculateCostsButton() {
+    @And("User clicks on Calculate Costs button")
+    public void userClicksOnCalculateCostsButton() {
         onlineBanking.myClick(onlineBanking.calculateCostsButton);
     }
 
-    @And("Click to Purchase")
-    public void clickToPurchase() {
+    @And("User clicks on Purchase")
+    public void userClicksOnPurchase() {
         onlineBanking.myClick(onlineBanking.purchaseButton);
     }
 

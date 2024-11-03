@@ -1,44 +1,47 @@
+  # Test Case 3:
+  # Add New Payee with Multiple Data Sets
 
-  #  Test Case 3:
+  #➢ Go to the ZeroBank site.
+  #➢ Log in
+  #➢ Click on Online Banking.
+  #➢ Click on Pay Bills.
+  #➢ Click "Add New Payee"
+  #➢ Fill in the Name, Address, Account, Details fields.
+  #➢ Click the Add button
+  #➢ Verify that the transaction has been completed successfully.
 
-  #➢ ZeroBank sitesine gidiniz.
-  #➢ Login olunuz
-  #➢ Online Banking’e tıklayınız.
-  #➢ Pay Bills’e tıklayınız.
-  #➢ “Add New Payee” tıklayınız
-  #➢ Name, Address, Account, Details alanlarını doldurunuz.
-  #➢ Add butona tıklayınız
-  #➢ İşlemin başarıyla tamamlandığını doğrulayınız.
+  # Note 1: Please send 3 different data
+  # Note 2: Use Data Table.
 
-  # NOT: 3 farklı data gönderiniz
-  # NOT: Data Table kullanınız.
+  Feature: Add New Payee with Data-Driven Testing
 
-Feature: New Payee Functionality
+    Background:
 
-  Background:
-    Given Navigate to website
-    And   Enter username that as "username" and password that as "password"
-    When  Click login button
-    Then  Verify that user logged in
+      Given Navigate to login page
+      And   Enter username that as "username" and password that as "password"
+      When  Click Sign In button
+      Then  Verify that user is redirected to account summary page
+      And   Verify that user icon is displayed
 
-  @Regression
-  Scenario Outline: Fill in the required information completely
-    When Click on the element in OnlineBanking
-      | onlineBanking |
-      | payBills      |
-      | addNewPayee   |
+    @Regression
+    Scenario Outline: Add a New Payee with Different Data Sets
 
-    And User sending name,address,account and details in OnlineBanking
-      | payeeName    | <name>    |
-      | payeeAddress | <address> |
-      | payeeAccount | <account> |
-      | payeeDetails | <details> |
+      When Click on the element in OnlineBanking
+        | onlineBanking |
+        | payBills      |
+        | addNewPayee   |
 
-    When Click to add button
-    Then Verify that the transaction was successful
+      And User sending name,address,account and details in OnlineBanking
+        | payeeName    | <name>    |
+        | payeeAddress | <address> |
+        | payeeAccount | <account> |
+        | payeeDetails | <details> |
 
-    Examples:
-      | name    | address | account | details          |
-      | Hilde   | Oslo    | 156328  | Rent payment     |
-      | Mustafa | Ankara  | 965832  | Amazon payment   |
-      | Alex    | London  | 965832  | Electricity bill |
+      When Click to add button
+      Then Verify that the transaction was successful
+
+      Examples:
+        | name    | address | account | details          |
+        | Hilde   | Oslo    | 156328  | Rent payment     |
+        | Mustafa | Ankara  | 965832  | Amazon payment   |
+        | Alex    | London  | 965832  | Electricity bill |
