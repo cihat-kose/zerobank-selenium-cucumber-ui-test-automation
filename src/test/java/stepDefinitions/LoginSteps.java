@@ -12,6 +12,7 @@ import pages.Login;
 import utilities.DriverManager;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -46,10 +47,10 @@ public class LoginSteps {
         Assert.assertTrue(login.userIcon.isDisplayed(), "User icon is not displayed, login may have failed.");
     }
 
-    @And("Enter username and password from ZeroBankData")
-    public void enterUsernameAndPasswordFromZeroBankData() throws IOException {
+    @And("Retrieve and enter username and password from Excel file {string}")
+    public void retrieveAndEnterUsernameAndPasswordFromExcelFileZeroBankDataXlsx(String fileName) throws IOException {
 
-        String path = "src/test/java/apachePOI/ZeroBankData.xlsx";
+        String path = "src/test/java/apachePOI/"+ fileName;
 
         FileInputStream fileInputStream = new FileInputStream(path);
         Workbook workbook = WorkbookFactory.create(fileInputStream);
