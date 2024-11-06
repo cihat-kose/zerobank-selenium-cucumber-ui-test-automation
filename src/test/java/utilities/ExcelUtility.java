@@ -8,10 +8,13 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ExcelUtility {
+
     public static ArrayList<ArrayList<String>> getData(String path, String sheetName, int numberOfColumns) {
+
         ArrayList<ArrayList<String>> table = new ArrayList<>();
 
         Sheet sheet = null;
+
         try {
             FileInputStream inputStream = new FileInputStream(path);
             Workbook workbook = WorkbookFactory.create(inputStream);
