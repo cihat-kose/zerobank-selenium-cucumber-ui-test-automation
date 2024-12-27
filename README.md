@@ -1,5 +1,5 @@
 
-# ZeroBank Selenium Cucumber Ui Test Automation
+# ZeroBank Selenium Cucumber UI Test Automation
 
 ![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
