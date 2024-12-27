@@ -1,5 +1,5 @@
 
-# TestingPractices_Cucumber_UI
+# ZeroBank Selenium Cucumber Ui Test Automation
 
 ![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
@@ -69,7 +69,7 @@ Additionally, test results are recorded in an Excel file using Apache POI. Each 
 1. **Clone the repository**:
    - Open IntelliJ IDEA.
    - Go to **File > New > Project from Version Control**.
-   - Enter the repository URL: `https://github.com/ChatGTHB/TestingPractices_Cucumber_UI.git`.
+   - Enter the repository URL: `https://github.com/ChatGTHB/zerobank-selenium-cucumber-ui-test-automation.git`.
    - Click **Clone**.
 
 2. **Install necessary plugins**:
@@ -109,7 +109,7 @@ To run tests in parallel, you can use TestNG XML files such as `ParallelTest.xml
 ## Folder Structure
 
 ```
-TestingPractices_Cucumber_UI/
+zerobank-selenium-cucumber-ui-test-automation/
 │
 ├── src/
 │   ├── main/                   # Main source code
