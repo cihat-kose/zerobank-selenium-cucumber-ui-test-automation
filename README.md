@@ -28,7 +28,7 @@
 
 ## About the Project
 
-The **TestingPractices_Cucumber_UI** framework is an automated testing solution created to validate various user scenarios on the ZeroBank platform. Designed to integrate Cucumber for Behavior-Driven Development (BDD), Selenium for UI automation, and TestNG for test execution and reporting, this framework enables efficient and consistent testing of core features such as login, payee management, and foreign currency purchases.
+The **ZeroBank Selenium Cucumber UI Test Automation** framework is an automated testing solution created to validate various user scenarios on the ZeroBank platform. Designed to integrate Cucumber for Behavior-Driven Development (BDD), Selenium for UI automation, and TestNG for test execution and reporting, this framework enables efficient and consistent testing of core features such as login, payee management, and foreign currency purchases.
 
 Additionally, this project serves as a practical resource for learners who are interested in mastering these technologies. By providing a real-world application of Selenium, Cucumber, TestNG, and Apache POI, the framework allows users to gain hands-on experience in automated UI testing, data-driven testing, and BDD practices.
 
@@ -69,7 +69,7 @@ Additionally, test results are recorded in an Excel file using Apache POI. Each 
 1. **Clone the repository**:
    - Open IntelliJ IDEA.
    - Go to **File > New > Project from Version Control**.
-   - Enter the repository URL: `https://github.com/ChatGTHB/zerobank-selenium-cucumber-ui-test-automation.git`.
+   - Enter the repository URL: `https://github.com/cihat-kose/zerobank-selenium-cucumber-ui-test-automation.git`.
    - Click **Clone**.
 
 2. **Install necessary plugins**:
