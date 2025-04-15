@@ -1,4 +1,3 @@
-
 # ZeroBank Selenium Cucumber UI Test Automation
 
 ![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
@@ -28,32 +27,44 @@
 
 ## About the Project
 
-The **ZeroBank Selenium Cucumber UI Test Automation** framework is an automated testing solution created to validate various user scenarios on the ZeroBank platform. Designed to integrate Cucumber for Behavior-Driven Development (BDD), Selenium for UI automation, and TestNG for test execution and reporting, this framework enables efficient and consistent testing of core features such as login, payee management, and foreign currency purchases.
+The **ZeroBank Selenium Cucumber UI Test Automation** framework is an automated testing solution created to validate
+various user scenarios on the ZeroBank platform. Designed to integrate Cucumber for Behavior-Driven Development (BDD),
+Selenium for UI automation, and TestNG for test execution and reporting, this framework enables efficient and consistent
+testing of core features such as login, payee management, and foreign currency purchases.
 
-Additionally, this project serves as a practical resource for learners who are interested in mastering these technologies. By providing a real-world application of Selenium, Cucumber, TestNG, and Apache POI, the framework allows users to gain hands-on experience in automated UI testing, data-driven testing, and BDD practices.
+Additionally, this project serves as a practical resource for learners who are interested in mastering these
+technologies. By providing a real-world application of Selenium, Cucumber, TestNG, and Apache POI, the framework allows
+users to gain hands-on experience in automated UI testing, data-driven testing, and BDD practices.
 
 ## Key Benefits
 
 - **Automated UI Testing**: Tests core functionalities such as login, adding a new payee, and foreign currency purchase.
-- **Behavior-Driven Development (BDD)**: Test scenarios are defined in a readable format using Cucumber and Gherkin syntax.
+- **Behavior-Driven Development (BDD)**: Test scenarios are defined in a readable format using Cucumber and Gherkin
+  syntax.
 - **Cross-Browser Testing**: Tests can be run across different browsers to ensure compatibility.
 - **Detailed Reporting**: Generates HTML and PDF reports with test results, including screenshots of failed scenarios.
-- **Data-Driven Testing with Apache POI**: Supports parameterized testing by fetching test data from Excel files, leveraging Apache POI for seamless Excel integration. User credentials are retrieved from an Excel file for login scenarios, and test results are recorded in an Excel file for detailed tracking.
+- **Data-Driven Testing with Apache POI**: Supports parameterized testing by fetching test data from Excel files,
+  leveraging Apache POI for seamless Excel integration. User credentials are retrieved from an Excel file for login
+  scenarios, and test results are recorded in an Excel file for detailed tracking.
 - **Page Object Model (POM)**: Simplifies test maintenance by using the POM design pattern.
 
 ## Features
 
-- **Login Functionality**: Validates login functionality by retrieving the username and password from an Excel file using Apache POI.
+- **Login Functionality**: Validates login functionality by retrieving the username and password from an Excel file
+  using Apache POI.
 - **Add New Payee**: Automates adding a new payee with multiple data inputs.
 - **Purchase Foreign Currency**: Tests the currency purchase functionality with various currency types and amounts.
-- **Data Table Support with Apache POI**: Uses data tables for parameterized tests, allowing multiple sets of input. Apache POI is used to manage test data from Excel files.
+- **Data Table Support with Apache POI**: Uses data tables for parameterized tests, allowing multiple sets of input.
+  Apache POI is used to manage test data from Excel files.
 - **Extent Reports**: Generates HTML and PDF reports of the test results.
 - **Parallel Testing**: Supports parallel execution to speed up test runs.
 - **Jenkins Integration**: Easily integrate with Jenkins for continuous integration and delivery (CI/CD) processes.
 
 ## Application Under Test
 
-The application under test is [ZeroBank](http://zero.webappsecurity.com/login.html), a demo banking application that provides various financial services. The framework tests functionalities such as login, online banking, and payee management to ensure these processes work as expected.
+The application under test is [ZeroBank](http://zero.webappsecurity.com/login.html), a demo banking application that
+provides various financial services. The framework tests functionalities such as login, online banking, and payee
+management to ensure these processes work as expected.
 
 ## Reporting
 
@@ -62,24 +73,26 @@ Test results are stored in the `test-output` and `testReports` directories. Repo
 - **HTML Report**: Located at `test-output/SparkReport/Spark.html`.
 - **PDF Report**: Available at `PdfReport.pdf` for a summarized overview.
 
-Additionally, test results are recorded in an Excel file using Apache POI. Each scenario’s name, status, and browser information are written to the Excel file, providing a detailed record of the test outcomes.
+Additionally, test results are recorded in an Excel file using Apache POI. Each scenario’s name, status, and browser
+information are written to the Excel file, providing a detailed record of the test outcomes.
 
 ## Installation
 
 1. **Clone the repository**:
-   - Open IntelliJ IDEA.
-   - Go to **File > New > Project from Version Control**.
-   - Enter the repository URL: `https://github.com/cihat-kose/zerobank-selenium-cucumber-ui-test-automation.git`.
-   - Click **Clone**.
+    - Open IntelliJ IDEA.
+    - Go to **File > New > Project from Version Control**.
+    - Enter the repository URL: `https://github.com/cihat-kose/zerobank-selenium-cucumber-ui-test-automation.git`.
+    - Click **Clone**.
 
 2. **Install necessary plugins**:
-   - Ensure **Cucumber for Java** and **Gherkin** plugins are installed in IntelliJ IDEA for Cucumber and Gherkin syntax support:
-     - Go to **File > Settings > Plugins** (or **Preferences** on macOS).
-     - Search for **Cucumber for Java** and **Gherkin**, install them, and restart IntelliJ IDEA if prompted.
+    - Ensure **Cucumber for Java** and **Gherkin** plugins are installed in IntelliJ IDEA for Cucumber and Gherkin
+      syntax support:
+        - Go to **File > Settings > Plugins** (or **Preferences** on macOS).
+        - Search for **Cucumber for Java** and **Gherkin**, install them, and restart IntelliJ IDEA if prompted.
 
 3. **Open the project**:
-   - IntelliJ IDEA should automatically detect and import the project as a Maven project.
-   - Wait for dependencies to download.
+    - IntelliJ IDEA should automatically detect and import the project as a Maven project.
+    - Wait for dependencies to download.
 
 ## Configuration
 
@@ -96,15 +109,17 @@ Additionally, test results are recorded in an Excel file using Apache POI. Each 
 ## Usage
 
 1. **Run tests**:
-   - Open the `src/test/java` directory in IntelliJ IDEA.
-   - Right-click on any test file or directory and select **Run 'TestName'**.
+    - Open the `src/test/java` directory in IntelliJ IDEA.
+    - Right-click on any test file or directory and select **Run 'TestName'**.
 
 2. **Jenkins Integration**:
-   - Integrate with Jenkins by creating a Jenkins job, adding a build step to run tests via Maven, and specifying `clean test` as the Maven goal.
+    - Integrate with Jenkins by creating a Jenkins job, adding a build step to run tests via Maven, and specifying
+      `clean test` as the Maven goal.
 
 ## Parallel Testing
 
-To run tests in parallel, you can use TestNG XML files such as `ParallelTest.xml`. Right-click on the XML file in IntelliJ and select **Run 'ParallelTest.xml'**.
+To run tests in parallel, you can use TestNG XML files such as `ParallelTest.xml`. Right-click on the XML file in
+IntelliJ and select **Run 'ParallelTest.xml'**.
 
 ## Folder Structure
 
