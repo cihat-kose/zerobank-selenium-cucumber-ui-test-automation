@@ -68,13 +68,22 @@ management to ensure these processes work as expected.
 
 ## Reporting
 
-Test results are stored in the `test-output` and `testReports` directories. Reports include:
+Test results are generated in multiple formats:
 
-- **HTML Report**: Located at `test-output/SparkReport/Spark.html`.
-- **PDF Report**: Available at `PdfReport.pdf` for a summarized overview.
+- **Pretty Console Output**: All runner classes include the `pretty` plugin for clean and readable terminal output.
+- **HTML Reports**:
+    - `TestRunnerWithPlugin`: Generates a basic HTML report at `target/site/cucumber-pretty.html`.
+    - `TestRunnerSmokeWithHtmlAndJson`: Generates a detailed HTML report at `target/reports/smoke-html-report.html`.
+- **JSON Report**:
+    - `TestRunnerSmokeWithHtmlAndJson`: Creates a JSON report at `target/reports/smoke-json-report.json` for integration with external tools.
+- **Extent Report**:
+    - `TestRunnerExtentReport`: Uses ExtentCucumberAdapter to generate rich, interactive reports.
+    - Location: `test-output/SparkReport/Spark.html`
+    - Includes system info like username, timezone, OS, etc.
+- **Excel Logging**:
+    - Test results (scenario name, status, browser) are logged in an Excel file using Apache POI for detailed tracking.
 
-Additionally, test results are recorded in an Excel file using Apache POI. Each scenario’s name, status, and browser
-information are written to the Excel file, providing a detailed record of the test outcomes.
+> Reports are saved under `target/`, `test-output/`, and `testReports/` directories.
 
 ## Installation
 
@@ -133,7 +142,7 @@ zerobank-selenium-cucumber-ui-test-automation/
 │       │   ├── apachePOI/      # Apache POI files and Excel data (e.g., ScenarioResults.xlsx, ZeroBankData.xlsx)
 │       │   ├── features/       # Cucumber feature files
 │       │   ├── pages/          # Page Object Model classes
-│       │   ├── runners/        # TestNG runner classes
+│       │   ├── runners/        # TestNG runner classes (Smoke, Regression, All, Pretty, JSON, Extent)
 │       │   ├── stepDefinitions/# Cucumber step definitions
 │       │   ├── utilities/      # Utility classes (e.g., DriverManager, ExcelUtility)
 │       │   └── xml/            # XML configuration files for parallel testing

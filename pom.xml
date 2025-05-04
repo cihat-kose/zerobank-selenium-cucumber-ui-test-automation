@@ -72,12 +72,12 @@
             <version>2.18.0</version>
         </dependency>
 
-        <!-- Apache Commons Lang for common Java functionalities (e.g., String manipulation) -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.17.0</version>
-        </dependency>
+<!--        &lt;!&ndash; Apache Commons Lang for common Java functionalities (e.g., String manipulation) &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-lang3</artifactId>-->
+<!--            <version>3.17.0</version>-->
+<!--        </dependency>-->
 
         <!-- ExtentReports adapter for Cucumber 7 for rich test reporting -->
         <dependency>
