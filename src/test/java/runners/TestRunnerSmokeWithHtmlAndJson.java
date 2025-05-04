@@ -9,9 +9,10 @@ import io.cucumber.testng.CucumberOptions;
         glue = "stepDefinitions",
         plugin = {
                 "pretty",
-                "html:target/site/cucumber-pretty.html"
+                "html:target/reports/smoke-html-report.html",
+                "json:target/reports/smoke-json-report.json"
         },
         dryRun = false
 )
-public class TestRunnerWithPlugin extends AbstractTestNGCucumberTests {
+public class TestRunnerSmokeWithHtmlAndJson extends AbstractTestNGCucumberTests {
 }
