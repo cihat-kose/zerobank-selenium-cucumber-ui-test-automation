@@ -136,7 +136,6 @@ IntelliJ and select **Run 'ParallelTest.xml'**.
 zerobank-selenium-cucumber-ui-test-automation/
 │
 ├── src/
-│   ├── main/                   # Main source code
 │   └── test/                   # Test source code
 │       ├── java/
 │       │   ├── apachePOI/      # Apache POI files and Excel data (e.g., ScenarioResults.xlsx, ZeroBankData.xlsx)
