@@ -43,5 +43,4 @@
       Examples:
         | name    | address | account | details          |
         | Hilde   | Oslo    | 156328  | Rent payment     |
-        | Mustafa | Ankara  | 965832  | Amazon payment   |
-        | Alex    | London  | 965832  | Electricity bill |
+        | Mustafa | Ankara  | 965832  | Amazon payment   |        | Alex    | London  | 965832  | Electricity bill |

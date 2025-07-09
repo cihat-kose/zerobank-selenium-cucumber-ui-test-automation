@@ -83,7 +83,14 @@ Test results are generated in multiple formats:
 - **Excel Logging**:
     - Test results (scenario name, status, browser) are logged in an Excel file using Apache POI for detailed tracking.
 
+
 > Reports are saved under `target/`, `test-output/`, and `testReports/` directories.
+
+## Prerequisites
+
+- **Java 21** or later
+- **Maven 3.9+**
+- A web browser with a compatible WebDriver (Chrome, Firefox, Edge, or Safari)
 
 ## Installation
 

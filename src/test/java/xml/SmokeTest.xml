@@ -7,5 +7,4 @@
             <class name="runners.TestRunnerSmoke">
             </class>
         </classes>
-    </test>
-</suite>
+    </test></suite>
