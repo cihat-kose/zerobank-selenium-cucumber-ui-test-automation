@@ -35,4 +35,5 @@
       Examples:
         | currency | amount |
         | NOK      | 1000   |
-        | EUR      | 100    |        | GBP      | 90     |
+        | EUR      | 100    |
+        | GBP      | 90     |
