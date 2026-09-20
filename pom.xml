@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.31.0</version>
+            <version>4.49.0</version>
         </dependency>
 
         <!-- Cucumber Java for writing feature files in Gherkin syntax -->
