@@ -16,11 +16,11 @@
       Given Navigate to login page
       And   Enter username that as "username" and password that as "password"
       When  Click Sign In button
-      Then  Verify that user is redirected to account summary page
+      Then  Verify that the authenticated home page is displayed
       And   Verify that user icon is displayed
 
-    @Regression
-    Scenario Outline: Purchase foreign currency and convert to U.S. dollars
+    @Regression @Currency
+    Scenario Outline: Purchase foreign currency using a U.S. dollar amount
 
       When User clicks on the Online Banking section
       And  User clicks on Pay Bills
@@ -29,11 +29,16 @@
       And  User enters amount as "<amount>"
       And  User clicks on U.S. dollar checkbox
       And  User clicks on Calculate Costs button
+      Then Verify that a conversion cost is displayed
       And  User clicks on Purchase
-      Then Verify that the transaction was successful
+      Then Verify that the currency purchase was successful
 
-      Examples:
+      @Smoke
+      Examples: Representative currency
         | currency | amount |
         | NOK      | 1000   |
+
+      Examples: Additional currencies
+        | currency | amount |
         | EUR      | 100    |
         | GBP      | 90     |

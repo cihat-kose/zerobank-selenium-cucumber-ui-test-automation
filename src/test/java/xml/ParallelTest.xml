@@ -4,14 +4,14 @@
     <test name="Edge Browser Test">
         <parameter name="browserType" value="edge"/>
         <classes>
-            <class name="runners.TestRunnerSmoke"/>
+            <class name="runners.TestRunnerParallel"/>
         </classes>
     </test>
 
     <test name="Firefox Browser Test">
         <parameter name="browserType" value="firefox"/>
         <classes>
-            <class name="runners.TestRunnerSmoke"/>
+            <class name="runners.TestRunnerParallel"/>
         </classes>
     </test>
 

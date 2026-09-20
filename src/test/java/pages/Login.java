@@ -15,6 +15,8 @@ public class Login extends Parent {
     public WebElement signInButton;
     @FindBy(css = "[class='icon-user']")
     public WebElement userIcon;
+    @FindBy(css = ".alert-error")
+    public WebElement loginError;
 
     public Login() {
         PageFactory.initElements(DriverManager.getDriver(), this);

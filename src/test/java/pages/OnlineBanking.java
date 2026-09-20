@@ -21,6 +21,8 @@ public class OnlineBanking extends Parent {
     public WebElement dollarCheckbox;
     @FindBy(id = "pc_calculate_costs")
     public WebElement calculateCostsButton;
+    @FindBy(id = "pc_conversion_amount")
+    public WebElement conversionAmount;
     @FindBy(id = "purchase_cash")
     public WebElement purchaseButton;
     @FindBy(id = "alert_content")
@@ -59,6 +61,6 @@ public class OnlineBanking extends Parent {
             case "payeeDetails":
                 return this.payeeDetails;
         }
-        return null;
+        throw new IllegalArgumentException("Unknown banking element: " + stringElement);
     }
 }

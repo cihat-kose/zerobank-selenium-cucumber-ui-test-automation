@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@Smoke",
         features = {"src/test/java/features"},
         glue = {"stepDefinitions"},
-        plugin = {"pretty"}
+        plugin = {"pretty", "html:target/reports/smoke.html", "json:target/reports/smoke.json"}
 )
 public class TestRunnerSmoke extends AbstractTestNGCucumberTests {
 }

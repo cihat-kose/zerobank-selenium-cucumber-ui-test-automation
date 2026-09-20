@@ -13,6 +13,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <test.runner>TestRunnerSmoke</test.runner>
         <!-- Set the language to English during execution -->
         <argLine>-Duser.language=en</argLine>
     </properties>
@@ -117,6 +118,15 @@
     <!-- Build and plugin configuration -->
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>21</release>
+                    <proc>none</proc>
+                </configuration>
+            </plugin>
             <!-- Maven Surefire Plugin to run tests (supports TestNG and JUnit tests) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -130,10 +140,36 @@
 
                     <includes>
                         <!-- Only run specified test classes; **/ allows matching any directory structure -->
-                        <include>**/TestRunnerSmoke.java</include>
+                        <include>**/${test.runner}.java</include>
                     </includes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>smoke</id>
+            <properties><test.runner>TestRunnerSmoke</test.runner></properties>
+        </profile>
+        <profile>
+            <id>regression</id>
+            <properties><test.runner>TestRunnerRegression</test.runner></properties>
+        </profile>
+        <profile>
+            <id>reports</id>
+            <properties><test.runner>TestRunnerExtentReport</test.runner></properties>
+        </profile>
+        <profile>
+            <id>parallel</id>
+            <build><plugins><plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/java/xml/ParallelTest.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin></plugins></build>
+        </profile>
+    </profiles>
 </project>

@@ -58,8 +58,15 @@ public class ForeignCurrencyPurchaseSteps {
         onlineBanking.myClick(onlineBanking.purchaseButton);
     }
 
-    @Then("Verify that the transaction was successful")
+    @Then("Verify that the currency purchase was successful")
     public void verifyThatTheTransactionWasSuccessful() {
-        onlineBanking.verifyContainsText(onlineBanking.successMessage, "success");
+        onlineBanking.verifyContainsText(onlineBanking.successMessage, "Foreign currency cash was successfully purchased.");
+    }
+
+    @Then("Verify that a conversion cost is displayed")
+    public void verifyConversionCost() {
+        onlineBanking.wait.until(driver -> !onlineBanking.conversionAmount.getText().isBlank());
+        org.testng.Assert.assertTrue(onlineBanking.conversionAmount.getText().matches("(?s).*\\d.*"),
+                "Conversion result must contain a numeric amount.");
     }
 }

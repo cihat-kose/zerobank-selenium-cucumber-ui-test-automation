@@ -2,7 +2,6 @@ package utilities;
 
 import io.cucumber.java.Scenario;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -14,148 +13,54 @@ import java.util.ArrayList;
 public class ExcelUtility {
 
     public static ArrayList<ArrayList<String>> getData(String path, String sheetName, int numberOfColumns) {
-
         ArrayList<ArrayList<String>> table = new ArrayList<>();
-
-        Sheet sheet = null;
-
-        try {
-            FileInputStream inputStream = new FileInputStream(path);
-            Workbook workbook = WorkbookFactory.create(inputStream);
-            sheet = workbook.getSheet(sheetName);
-        } catch (IOException exception) {
-            System.out.println("exception = " + exception.getMessage());
-        }
-
-        for (int i = 0; i < sheet.getPhysicalNumberOfRows(); i++) {  // each line
-            ArrayList<String> row = new ArrayList<>();
-
-            for (int j = 0; j < numberOfColumns; j++) {  // circulate as many columns as possible
-                row.add(sheet.getRow(i).getCell(j).toString());
+        try (FileInputStream input = new FileInputStream(path);
+             Workbook workbook = WorkbookFactory.create(input)) {
+            Sheet sheet = workbook.getSheet(sheetName);
+            if (sheet == null) throw new IllegalArgumentException("Missing sheet: " + sheetName);
+            DataFormatter formatter = new DataFormatter();
+            for (Row sourceRow : sheet) {
+                ArrayList<String> row = new ArrayList<>();
+                for (int column = 0; column < numberOfColumns; column++) {
+                    row.add(formatter.formatCellValue(sourceRow.getCell(column)));
+                }
+                table.add(row);
             }
-            table.add(row);
+        } catch (IOException exception) {
+            throw new java.io.UncheckedIOException("Cannot read Excel data: " + path, exception);
         }
         return table;
     }
-
     public static void writeToExcel(String path, Scenario scenario, String browserName) {
+        writeResult(path, scenario.getName(), scenario.getStatus().toString(), browserName);
+    }
 
+    // Serializes the entire read-modify-write operation within this test JVM.
+    static synchronized void writeResult(String path, String scenarioName, String status, String browserName) {
         File file = new File(path);
-
-        if (!file.exists()) // If the file does not exist, it runs first time and 1 time
-        {
-            // Create a workbook in memory, create a sheet in memory
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            XSSFSheet sheet = workbook.createSheet("Scenario Results");
-
-            // Perform operations in memory
-            Row row = sheet.createRow(0);
-
-            Cell cell = row.createCell(0);
-            cell.setCellValue(scenario.getName());
-
-            cell = row.createCell(1);
-            cell.setCellValue(String.valueOf(scenario.getStatus())); // scenario.toString();
-
-            cell = row.createCell(2);
-            cell.setCellValue(browserName);
-
-            // Save
-            try {
-                FileOutputStream outputStream = new FileOutputStream(path);
-                workbook.write(outputStream);
-                workbook.close();
-                outputStream.close();
-            } catch (Exception exception) {
-                System.out.println("exception.getMessage() = " + exception.getMessage());
+        File parent = file.getAbsoluteFile().getParentFile();
+        if (!parent.isDirectory() && !parent.mkdirs() && !parent.isDirectory()) {
+            throw new IllegalStateException("Cannot create results directory: " + parent);
+        }
+        try (Workbook workbook = file.exists() ? readWorkbook(file) : new XSSFWorkbook()) {
+            Sheet sheet = workbook.getNumberOfSheets() == 0
+                    ? workbook.createSheet("Scenario Results") : workbook.getSheetAt(0);
+            int rowIndex = sheet.getPhysicalNumberOfRows() == 0 ? 0 : sheet.getLastRowNum() + 1;
+            Row row = sheet.createRow(rowIndex);
+            row.createCell(0).setCellValue(scenarioName);
+            row.createCell(1).setCellValue(status);
+            row.createCell(2).setCellValue(browserName);
+            try (FileOutputStream output = new FileOutputStream(file)) {
+                workbook.write(output);
             }
-        } else {
-            FileInputStream inputStream = null;
-            Workbook workbook = null;
-            Sheet sheet = null;
-
-            try {
-                inputStream = new FileInputStream(path);
-                workbook = WorkbookFactory.create(inputStream);
-                sheet = workbook.getSheetAt(0);
-            } catch (Exception exception) {
-                System.out.println("exception.getMessage() = " + exception.getMessage());
-            }
-
-            int lastRowIndex = sheet.getPhysicalNumberOfRows();
-            Row row = sheet.createRow(lastRowIndex);
-
-            Cell cell = row.createCell(0);
-            cell.setCellValue(scenario.getName());
-
-            cell = row.createCell(1);
-            cell.setCellValue(scenario.getStatus().toString());
-
-            cell = row.createCell(2);
-            cell.setCellValue(browserName);
-
-            try {
-                inputStream.close();
-                FileOutputStream outputStream = new FileOutputStream(path);
-                workbook.write(outputStream);
-                workbook.close();
-                outputStream.close();
-            } catch (Exception exception) {
-                System.out.println("exception.getMessage() = " + exception.getMessage());
-            }
+        } catch (IOException exception) {
+            throw new java.io.UncheckedIOException("Cannot write scenario results to " + path, exception);
         }
     }
 
-//    public static void writeToExcel(String path, String data) {
-//        File file = new File(path);
-//
-//        if (!file.exists()) { // If the file does not exist, it runs first time and 1 time
-//
-//            // Create a workbook in memory, create a sheet in memory
-//            XSSFWorkbook workbook = new XSSFWorkbook();
-//            XSSFSheet sheet = workbook.createSheet("Scenario Results");
-//
-//            // Perform operations in memory
-//            Row newRow = sheet.createRow(0);
-//            Cell cell = newRow.createCell(0);
-//            cell.setCellValue(data + " was created");
-//
-//            // Save
-//            try {
-//                FileOutputStream outputStream = new FileOutputStream(path);
-//                workbook.write(outputStream);
-//                workbook.close();
-//                outputStream.close();
-//            } catch (Exception exception) {
-//                System.out.println("exception.getMessage() = " + exception.getMessage());
-//            }
-//        } else {
-//            FileInputStream inputStream = null;
-//            Workbook workbook = null;
-//            Sheet sheet = null;
-//
-//            try {
-//                inputStream = new FileInputStream(path);
-//                workbook = WorkbookFactory.create(inputStream);
-//                sheet = workbook.getSheetAt(0);
-//            } catch (Exception exception) {
-//                System.out.println("exception.getMessage() = " + exception.getMessage());
-//            }
-//
-//            int lastRowIndex = sheet.getPhysicalNumberOfRows();
-//            Row newRow = sheet.createRow(lastRowIndex);
-//            Cell newCell = newRow.createCell(0);
-//            newCell.setCellValue(data);
-//
-//            try {
-//                inputStream.close();
-//                FileOutputStream outputStream = new FileOutputStream(path);
-//                workbook.write(outputStream);
-//                workbook.close();
-//                outputStream.close();
-//            } catch (Exception exception) {
-//                System.out.println("exception.getMessage() = " + exception.getMessage());
-//            }
-//        }
-//    }
+    private static Workbook readWorkbook(File file) throws IOException {
+        try (FileInputStream input = new FileInputStream(file)) {
+            return WorkbookFactory.create(input);
+        }
+    }
 }

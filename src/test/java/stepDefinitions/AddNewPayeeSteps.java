@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import pages.OnlineBanking;
 
@@ -37,5 +38,11 @@ public class AddNewPayeeSteps {
     @When("Click to add button")
     public void clickToAddButton() {
         onlineBanking.myClick(onlineBanking.addButton);
+    }
+
+    @Then("Verify that payee {string} was created")
+    public void verifyPayeeCreated(String name) {
+        onlineBanking.verifyContainsText(onlineBanking.successMessage,
+                "The new payee " + name + " was successfully created.");
     }
 }

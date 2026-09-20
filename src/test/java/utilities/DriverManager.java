@@ -2,14 +2,15 @@ package utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DriverManager {
     private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
@@ -17,54 +18,51 @@ public class DriverManager {
 
     public static WebDriver getDriver() {
 
-        Locale.setDefault(new Locale("EN"));
-        System.setProperty("user.language", "EN");
-
-        Logger logger = Logger.getLogger("");
-        logger.setLevel(Level.SEVERE);
-
         if (threadBrowserName.get() == null) {
-            threadBrowserName.set("edge");
+            setThreadBrowserName(System.getProperty("browser", "edge"));
         }
 
         if (threadDriver.get() == null) {
-
+            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
             switch (threadBrowserName.get()) {
                 case "firefox":
-                    threadDriver.set(new FirefoxDriver());
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    if (headless) firefoxOptions.addArguments("-headless");
+                    threadDriver.set(new FirefoxDriver(firefoxOptions));
                     break;
                 case "chrome":
-                    threadDriver.set(new ChromeDriver());
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    if (headless) chromeOptions.addArguments("--headless=new");
+                    threadDriver.set(new ChromeDriver(chromeOptions));
                     break;
                 case "safari":
+                    if (headless) throw new IllegalArgumentException("Safari does not support headless mode.");
                     threadDriver.set(new SafariDriver());
                     break;
                 default:
-                    threadDriver.set(new EdgeDriver());
+                    EdgeOptions edgeOptions = new EdgeOptions();
+                    if (headless) edgeOptions.addArguments("--headless=new");
+                    threadDriver.set(new EdgeDriver(edgeOptions));
             }
+            threadDriver.get().manage().window().setSize(new org.openqa.selenium.Dimension(1440, 1000));
+            threadDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         }
-
-        threadDriver.get().manage().window().maximize();
-        threadDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         return threadDriver.get();
     }
 
     public static void quitDriver() {
-
         try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            if (threadDriver.get() != null) {
+                threadDriver.get().quit();
+            }
+        } finally {
+            threadDriver.remove();
+            threadBrowserName.remove();
         }
+    }
 
-        if (threadDriver.get() != null) {
-            threadDriver.get().quit();
-
-            WebDriver driver = threadDriver.get();
-            driver = null;
-
-            threadDriver.set(driver);
-        }
+    public static boolean hasDriver() {
+        return threadDriver.get() != null;
     }
 
     public static String getThreadBrowserName() {
@@ -72,6 +70,10 @@ public class DriverManager {
     }
 
     public static void setThreadBrowserName(String browser) {
-        threadBrowserName.set(browser);
+        String normalized = browser.trim().toLowerCase(Locale.ROOT);
+        if (!java.util.Set.of("edge", "chrome", "firefox", "safari").contains(normalized)) {
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
+        }
+        threadBrowserName.set(normalized);
     }
 }

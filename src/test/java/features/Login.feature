@@ -9,6 +9,7 @@
   # Username: username
   # Password: password
 
+  @Regression @Authentication
   Feature: Login Functionality
 
     @Smoke
@@ -17,5 +18,17 @@
       Given Navigate to login page
       And   Enter username that as "username" and password that as "password"
       When  Click Sign In button
-      Then  Verify that user is redirected to account summary page
+      Then  Verify that the authenticated home page is displayed
       And   Verify that user icon is displayed
+
+    @Negative
+    Scenario Outline: Reject invalid credentials
+      Given Navigate to login page
+      And Enter username that as "<username>" and password that as "<password>"
+      When Submit invalid login credentials
+      Then Verify that login is rejected
+
+      Examples:
+        | username     | password       |
+        | username     | wrong-password |
+        | unknown-user | password       |

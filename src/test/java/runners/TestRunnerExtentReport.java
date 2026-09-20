@@ -3,7 +3,7 @@ package runners;
 import com.aventstack.extentreports.service.ExtentService;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 @CucumberOptions(
         tags = "@Smoke",
@@ -17,11 +17,10 @@ import org.testng.annotations.AfterClass;
 )
 public class TestRunnerExtentReport extends AbstractTestNGCucumberTests {
 
-    @AfterClass
-    public static void writeExtentReport() {
-        ExtentService.getInstance().setSystemInfo("Windows Username", "Bug Hunter");
+    @BeforeClass
+    public void writeExtentReport() {
         ExtentService.getInstance().setSystemInfo("Time Zone", System.getProperty("user.timezone"));
-        ExtentService.getInstance().setSystemInfo("Username", "Cihat");
+        ExtentService.getInstance().setSystemInfo("Java Version", System.getProperty("java.version"));
         ExtentService.getInstance().setSystemInfo("Application Name", "Zero Bank");
         ExtentService.getInstance().setSystemInfo("Operating System Info", System.getProperty("os.name"));
         ExtentService.getInstance().setSystemInfo("Department", "QA");

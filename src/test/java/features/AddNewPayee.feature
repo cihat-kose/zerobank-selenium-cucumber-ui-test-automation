@@ -20,10 +20,10 @@
       Given Navigate to login page
       And   Enter username that as "username" and password that as "password"
       When  Click Sign In button
-      Then  Verify that user is redirected to account summary page
+      Then  Verify that the authenticated home page is displayed
       And   Verify that user icon is displayed
 
-    @Regression
+    @Regression @Payee
     Scenario Outline: Add a New Payee with Different Data Sets
 
       When Click on the element in OnlineBanking
@@ -38,10 +38,14 @@
         | payeeDetails | <details> |
 
       When Click to add button
-      Then Verify that the transaction was successful
+      Then Verify that payee "<name>" was created
 
-      Examples:
+      @Smoke
+      Examples: Representative payee
         | name    | address | account | details          |
         | Hilde   | Oslo    | 156328  | Rent payment     |
+
+      Examples: Additional payee data
+        | name    | address | account | details          |
         | Mustafa | Ankara  | 965832  | Amazon payment   |
         | Alex    | London  | 965832  | Electricity bill |
